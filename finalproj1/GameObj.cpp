@@ -139,7 +139,7 @@ void GameObj::ResetShip(RenderWindow& window)
 }
 void charidle()
 {
-
+	
 }
 
 
