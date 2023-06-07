@@ -37,7 +37,7 @@ vector<IntRect> AttackframeDefs{
 	{999,9,54,65},
 	{1056,9,54,65},
 	{1130,9,54,65},
-	{1210,9,54,65},
+	{1210,9,54,65}
 
 	//framedefs is the values of the sprites 
 };
@@ -295,7 +295,7 @@ Vector2f Decay(Vector2f& currentVal, float pcnt, float timeInterval, float dTime
 	return alpha;
 }
 
-void GameObj::PlayerControl(const Vector2u& screenSz, float elapsed, bool fire)
+void GameObj::PlayerControl(const Vector2u& screenSz, float elapsed,bool fire)
 {
 	Vector2f pos = spr.getPosition();
 	const float SPEED = 250.f;
@@ -303,27 +303,28 @@ void GameObj::PlayerControl(const Vector2u& screenSz, float elapsed, bool fire)
 
 	static Vector2f thrust{ 0,0 };
 
-	if (Keyboard::isKeyPressed(Keyboard::Left) ||
-		Keyboard::isKeyPressed(Keyboard::Right)
-		)
-	{
+	
+	
 		
-		if (Keyboard::isKeyPressed(Keyboard::Left)) 
-		{
-			thrust.x = -SPEED;
-			spr.setScale(3.f, 3.f);//changes direction depending of the direction of movement 
-		}
-		else if (Keyboard::isKeyPressed(Keyboard::Right))
-		{
-			thrust.x = SPEED;
-			spr.setScale(-3.f, 3.f);//changes direction depending of the direction of movement 
-		}
-			
-		////cycles the sprite sheet to make an animation
+	if (Keyboard::isKeyPressed(Keyboard::Left)) 
+	{
+		thrust.x = -SPEED;
+		spr.setScale(3.f, 3.f);//changes direction depending of the direction of movement 
 		walkAnim.Updatechar(elapsed);
 		spr.setTextureRect(walkframeDefs[walkAnim.frameIdx]);
 	}
-	if (Keyboard::isKeyPressed(Keyboard::R))
+	else if (Keyboard::isKeyPressed(Keyboard::Right))
+	{
+		thrust.x = SPEED;
+		spr.setScale(-3.f, 3.f);//changes direction depending of the direction of movement 
+		walkAnim.Updatechar(elapsed);
+		spr.setTextureRect(walkframeDefs[walkAnim.frameIdx]);
+	}
+			
+		////cycles the sprite sheet to make an animation
+	
+	
+	else if (Keyboard::isKeyPressed(Keyboard::R))
 	{
 		atckAnim.Updatechar(elapsed);
 	    spr.setTextureRect(AttackframeDefs[atckAnim.frameIdx]);
@@ -331,10 +332,10 @@ void GameObj::PlayerControl(const Vector2u& screenSz, float elapsed, bool fire)
 		
 	}
 	else
-	{
+	{ 
 		idleAnim.Updatechar(elapsed);
 		spr.setTextureRect(idleframeDefs[idleAnim.frameIdx]);
-	}
+    }
 
 	pos += thrust * elapsed;
 	thrust = Decay(thrust, 0.1f, 0.02f, elapsed);
