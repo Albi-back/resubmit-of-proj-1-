@@ -12,10 +12,9 @@ int main()
 {
 	// Create the main window
 	RenderWindow window(VideoMode(GC::SCREEN_RES.x, GC::SCREEN_RES.y), "Legend Quest 2D");
-
+	window.setSize(sf::Vector2u(1800, 600));
 	Game game;
-	game.
-		Init(window);
+	game.Init(window);
 
 	Clock clock;
 
