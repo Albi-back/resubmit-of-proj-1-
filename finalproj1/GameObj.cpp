@@ -128,7 +128,7 @@ void GameObj::InitChar(RenderWindow& window, Texture& tex)
 	spr.setOrigin(texRect.width / 2.f, texRect.height / 2.f);
 	spr.setScale(-3.f, 3.f);
 	spr.setRotation(0);
-	type = ObjectT::Ship;
+	type = ObjectT::player;
 }
 
 void GameObj::ResetShip(RenderWindow& window)
@@ -142,7 +142,14 @@ void charidle()
 	
 }
 
+void GameObj::Initbckgd(RenderWindow& window, Texture& tex)
+{
+	spr.setTexture(tex, true);
+	spr.setOrigin(window.getSize().x / 2.f, window.getSize().y / 2.f);
+	spr.setRotation(0);
+	type = ObjectT::Background;
 
+}
 
 void GameObj::ResetRock()
 {
@@ -178,7 +185,7 @@ void GameObj::Init(RenderWindow& window, Texture& tex, ObjectT type_, Game& game
 	switch (type_)
 	
 	{
-	case ObjectT::Ship:
+	case ObjectT::player:
  		InitChar(window, tex);
 		break;
 	
@@ -201,7 +208,7 @@ void GameObj::Update(RenderWindow& window, float elapsed, bool fire)
 		colliding = false;
 		switch (type)
 		{
-		case ObjectT::Ship:
+		case ObjectT::player:
 			PlayerControl(window.getSize(), elapsed, fire);
 			break;
 		case ObjectT::Rock:
@@ -375,7 +382,7 @@ void GameObj::FireBullet(const Vector2f& pos)
 		GameObj& bullet = pGame->objects[idx];
 		bullet.active = true;
 		bullet.spr.setPosition(pos);
-		if (type == ObjectT::Ship)
+		if (type == ObjectT::player)
 			bullet.spr.setColor(Color(128, 128, 255, 255));
 		else
 			bullet.spr.setColor(Color(255, 128, 128, 255));
@@ -458,7 +465,7 @@ void GameObj::Hit(GameObj& other)
 {
 	switch (type)
 	{
-	case ObjectT::Ship:
+	case ObjectT::player:
 		{
 			bool spawnedByMe = other.pMySpawner && other.pMySpawner->type == type;
 			if (!spawnedByMe)
@@ -500,7 +507,7 @@ void GameObj::TakeDamage(int amount, GameObj& other)
 
 	switch (type)
 	{
-	case ObjectT::Ship:
+	case ObjectT::player:
 		ShipExplode(*pGame, spr.getPosition(), Vector2f{ 0,0 });
 		assert(pGame);
 		pGame->metrics.lives--;

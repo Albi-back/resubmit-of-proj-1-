@@ -404,7 +404,8 @@ void RenderBackground(sf::RenderWindow& window)
 	LoadTexture("data/bckgd1.jpg", background);
 
 	Sprite bg(background);
-	bg.setPosition(window.getSize().x/2.f, window.getSize().y / 2.f);
+	
+	
 	window.draw(bg);
 }
 //loads the background 

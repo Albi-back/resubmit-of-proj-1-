@@ -11,8 +11,8 @@ using namespace std;
 int main()
 {
 	// Create the main window
-	RenderWindow window(VideoMode(GC::SCREEN_RES.x, GC::SCREEN_RES.y), "Legend Quest 2D");
-	window.setSize(sf::Vector2u(1800, 600));
+	RenderWindow window(VideoMode(640, 384), "Legend Quest 2D");
+	
 	Game game;
 	game.Init(window);
 

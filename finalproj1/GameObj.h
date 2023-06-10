@@ -15,7 +15,7 @@ struct GameObj
 	sf::Sprite spr;	//main image
 	sf::Sprite bg;
 	float radius = 0;				//collision radius
-	enum class ObjectT { Ship, Rock, Bullet, Enemy,Background };	//what is this object instance?
+	enum class ObjectT { player, Rock, Bullet, Enemy,Background };	//what is this object instance?
 	ObjectT type = ObjectT::Rock;	//what type am I?	
 	bool colliding = false;			//did we hit something on the last update
 	bool active = false;			//should we be updating and rendering this one?
@@ -48,12 +48,14 @@ struct GameObj
 	//These two are like the others but for enemy ships
 	void InitEnemy(sf::RenderWindow& window, sf::Texture& tex);
 	void ResetEnemy();
+	void Initbckgd(sf::RenderWindow& window, sf::Texture& tex);
 	/*move and update logic
+	*
 	window - usual render window
 	elapsed - physics simulation needs frame time 1/60th a second or similar
 	fire - did the player want to shoot
 	*/
-	void InitBackground(sf::RenderWindow& window, sf::Texture& tex);
+	
 	void Update(sf::RenderWindow& window, float elapsed, bool fire);
 	//draw yourself
 	//need the window to draw and elapsed time might be needed if there's any motion or spinning or scaling
