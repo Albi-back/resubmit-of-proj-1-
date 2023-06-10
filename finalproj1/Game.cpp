@@ -290,7 +290,8 @@ void Game::Init(sf::RenderWindow & window) {
 	
 	size_t idx = 0, total=0;
 	
-	objects[idx++].Init(window, texChar, GameObj::ObjectT::Ship, *this);
+	objects[idx++].Init(window, texChar, GameObj::ObjectT::player, *this);
+	objects[idx++].Init(window, texbckgrnd, GameObj::ObjectT::Background,*this);
 
 	
 	
@@ -398,16 +399,7 @@ void Game::RenderGameOver(sf::RenderWindow & window, float elapsed) {
 	window.draw(txt);
 
 }
-void RenderBackground(sf::RenderWindow& window)
-{
-	Texture background;
-	LoadTexture("data/bckgd1.jpg", background);
 
-	Sprite bg(background);
-	
-	
-	window.draw(bg);
-}
 //loads the background 
 void Game::Render(sf::RenderWindow & window, float elapsed) {
 
@@ -423,7 +415,7 @@ void Game::Render(sf::RenderWindow & window, float elapsed) {
 		}
 		case Mode::GAME:
 		{
-			RenderBackground(window);//loads the background before the loop so it doesnt overlap the player 
+			
 			for (size_t i = 0; i < objects.size(); ++i)
 			{
 			objects[i].Render(window, elapsed);

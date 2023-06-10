@@ -147,6 +147,7 @@ void GameObj::Initbckgd(RenderWindow& window, Texture& tex)
 	spr.setTexture(tex, true);
 	spr.setOrigin(window.getSize().x / 2.f, window.getSize().y / 2.f);
 	spr.setRotation(0);
+	spr.setScale(window.getSize().x, window.getSize().y);
 	type = ObjectT::Background;
 
 }
@@ -191,10 +192,10 @@ void GameObj::Init(RenderWindow& window, Texture& tex, ObjectT type_, Game& game
 	
 /*	case ObjectT::Bullet:
 		InitBullet(window, tex);
-		break;
-	case ObjectT::Enemy:
-		InitEnemy(window, tex);
 		break;*/
+	case ObjectT::Background:
+		Initbckgd(window, tex);
+		break;
 	
 	default:
 		assert(false);
