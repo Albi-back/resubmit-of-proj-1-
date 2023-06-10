@@ -125,7 +125,7 @@ void GameObj::InitChar(RenderWindow& window, Texture& tex)
 	spr.setTexture(tex, true);
 	const IntRect& texRect = idleframeDefs[0];
 	spr.setTextureRect(idleframeDefs[0]);//sets thevalues of the sprite sheet to the 1st sprite 
-	spr.setOrigin(texRect.width / 2.f, texRect.height / 2.f);
+	spr.setOrigin(texRect.width / 2.f, texRect.height / 7.5f);
 	spr.setScale(-3.f, 3.f);
 	spr.setRotation(0);
 	type = ObjectT::player;

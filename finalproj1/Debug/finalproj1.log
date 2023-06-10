@@ -1,4 +1,12 @@
-﻿  Game.cpp
-  main.cpp
-  Generating Code...
+﻿  GameObj.cpp
+C:\Users\Albi\Desktop\p2dg\sem2\project 1\resubmit-of-proj-1-\finalproj1\GameObj.cpp(150,51): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Albi\Desktop\p2dg\sem2\project 1\resubmit-of-proj-1-\finalproj1\GameObj.cpp(150,31): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
   finalproj1.vcxproj -> C:\Users\Albi\Desktop\p2dg\sem2\project 1\resubmit-of-proj-1-\bin\finalproj1.exe
