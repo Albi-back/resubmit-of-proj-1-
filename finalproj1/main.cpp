@@ -11,7 +11,7 @@ using namespace std;
 int main()
 {
 	// Create the main window
-	RenderWindow window(VideoMode(640, 384), "Legend Quest 2D");
+	RenderWindow window(VideoMode(861, 384), "Legend Quest 2D");
 	
 	Game game;
 	game.Init(window);

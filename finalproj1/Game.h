@@ -94,7 +94,7 @@ struct Game
 	//textures we are going to need, load them once only
 	
 	sf::Texture texChar;
-	sf::Texture texbckgrnd;
+	
 	sf::Texture texRock;
 	sf::Texture texBullet;
 	sf::Texture texEnemy;
