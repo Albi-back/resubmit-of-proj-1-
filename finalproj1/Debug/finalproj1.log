@@ -1,4 +1,5 @@
 ﻿  GameObj.cpp
+C:\Users\Albi\Desktop\p2dg\sem2\project 1\resubmit-of-proj-1-\finalproj1\GameObj.cpp(128,29): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\Albi\Desktop\p2dg\sem2\project 1\resubmit-of-proj-1-\finalproj1\GameObj.cpp(150,51): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
           with
           [

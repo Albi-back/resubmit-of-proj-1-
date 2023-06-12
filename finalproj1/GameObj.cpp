@@ -125,7 +125,7 @@ void GameObj::InitChar(RenderWindow& window, Texture& tex)
 	spr.setTexture(tex, true);
 	const IntRect& texRect = idleframeDefs[0];
 	spr.setTextureRect(idleframeDefs[0]);//sets thevalues of the sprite sheet to the 1st sprite 
-	spr.setOrigin(texRect.width / 2.f, texRect.height / 7.5f);
+	spr.setOrigin(texRect.width/2, texRect.height / 7.5f);
 	spr.setScale(-3.f, 3.f);
 	spr.setRotation(0);
 	type = ObjectT::player;
@@ -168,16 +168,16 @@ void GameObj::ResetEnemy()
 
 void GameObj::InitBullet(RenderWindow& window, Texture& tex)
 {
-	//spr.setTexture(tex);
-	//IntRect texR(0, 0, 32, 32);
-	//spr.setTextureRect(texR);
-	//spr.setOrigin(texR.width / 2.f, texR.height / 2.f);
-	//radius = 5.f;
-	//float scale = 0.5f;
-	//spr.setScale(scale, scale);
-	//active = false;
-	//type = ObjectT::Bullet;
-	//health = 0;
+	spr.setTexture(tex);
+	IntRect texR(0, 0, 32, 32);
+	spr.setTextureRect(texR);
+	spr.setOrigin(texR.width / 2.f, texR.height / 2.f);
+	radius = 5.f;
+	float scale = 0.5f;
+	spr.setScale(scale, scale);
+	active = false;
+	type = ObjectT::Bullet;
+	health = 0;
 }
 
 void GameObj::Init(RenderWindow& window, Texture& tex, ObjectT type_, Game& game)
@@ -190,9 +190,9 @@ void GameObj::Init(RenderWindow& window, Texture& tex, ObjectT type_, Game& game
  		InitChar(window, tex);
 		break;
 	
-/*	case ObjectT::Bullet:
+	case ObjectT::Bullet:
 		InitBullet(window, tex);
-		break;*/
+		break;
 	case ObjectT::Background:
 		Initbckgd(window, tex);
 		break;
@@ -250,10 +250,10 @@ void GameObj::MoveEnemy(const sf::Vector2u& screenSz, float elapsed)
 
 void GameObj::MoveBullet(const sf::Vector2u& screenSz, float elapsed)
 {
-	/*
+	
 	const Vector2f& pos = spr.getPosition();
 	float x;
-	if (pMySpawner && pMySpawner->type == ObjectT::Ship)
+	if (pMySpawner && pMySpawner->type == ObjectT::player)
 	{
 		x = pos.x + 250 * elapsed;
 		if (x > (screenSz.x + spr.getGlobalBounds().width / 2.f))
@@ -265,7 +265,7 @@ void GameObj::MoveBullet(const sf::Vector2u& screenSz, float elapsed)
 		if (x < 0)
 			active = false;
 	}
-	spr.setPosition(x, pos.y);*/
+	spr.setPosition(x, pos.y);
 }
 
 
@@ -336,6 +336,7 @@ void GameObj::PlayerControl(const Vector2u& screenSz, float elapsed,bool fire)
 	{
 		atckAnim.Updatechar(elapsed);
 	    spr.setTextureRect(AttackframeDefs[atckAnim.frameIdx]);
+		fire = true;
 		
 		
 	}

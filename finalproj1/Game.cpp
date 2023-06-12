@@ -278,7 +278,7 @@ bool Spawn(GameObj::ObjectT type, RenderWindow& window, vector<GameObj>& objects
 void Game::Init(sf::RenderWindow & window) {
 	
 	LoadTexture("data/Knight.png",texChar);
-	
+	LoadTexture("data/bg2.png",texBullet);
 	
 	
 	if (!font.loadFromFile("data/fonts/comic.ttf"))
@@ -291,6 +291,8 @@ void Game::Init(sf::RenderWindow & window) {
 	size_t idx = 0, total=0;
 	
 	objects[idx++].Init(window, texChar, GameObj::ObjectT::player, *this);
+	for (idx; idx < total; ++idx)
+		objects[idx].Init(window, texBullet, GameObj::ObjectT::Bullet, *this);
 	
 
 	
